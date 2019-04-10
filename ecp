@@ -1,0 +1,27 @@
+#!/usr/bin/env python
+
+import argparse
+import os
+from shutil import copy2, copytree
+
+parser = argparse.ArgumentParser()
+parser.add_argument("file", nargs="?", default=None, help="The file to copy.")
+args = parser.parse_args()
+
+ecp_path = "{}/.ecp/file".format(os.path.expanduser("~"))
+
+if args.file:
+    with open(ecp_path, "w+") as f:
+        file_path = os.path.abspath(args.file)
+        f.write(file_path)
+        print("Exported {}".format(file_path))
+else:
+    with open(ecp_path, "r") as f:
+        src = f.readline()
+        if os.path.isdir(src):
+            dest = "{}/{}".format(os.getcwd(), os.path.basename(src))
+            copytree(src, dest)
+        else:
+            dest = os.getcwd()
+            copy2(src, dest)
+        print("Copied {} to {}".format(src, dest))
