@@ -13,5 +13,6 @@ ecp
 ```
 
 Details:
-When exporting writes the full path to the file to "~/.ecp/file".
-When importing copies the file path stored in "~/.ecp/file" to the current working directory.
+When exporting writes the full path to the file to "\~/.ecp/file".
+
+When importing copies the file path stored in "\~/.ecp/file" to the current working directory.
