@@ -8,7 +8,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("files", nargs="*", help="The files to export.")
 args = parser.parse_args()
 
-ecp_path = "{}/.ecp/file".format(os.path.expanduser("~"))
+ecp_path = "/tmp/ecp"
 
 if args.files:
     with open(ecp_path, "a+") as f:
